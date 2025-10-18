@@ -1,7 +1,7 @@
 {
   "name": "node-server-testing",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express + MongoDB backend deployed on Render",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,13 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "4.17.1",
-    "mochawesome": "6.1.1",
-    "mongoose": "^5.10.15"
+    "express": "^4.19.2",
+    "mongoose": "^8.6.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "mocha": "^8.2.1"
+    "chai": "^4.4.1",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
