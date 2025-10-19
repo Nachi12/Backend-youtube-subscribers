@@ -15,6 +15,7 @@ if (!MONGO_URI) {
 
 // ✅ Basic homepage route
 app.get("/", (req, res) => {
+  const baseUrl=`https://${req.headers.host}`;
   res.send(`
     <div style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
       <h1>🎬 YouTube Subscribers API</h1>
