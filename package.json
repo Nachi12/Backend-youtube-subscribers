@@ -1,11 +1,12 @@
 {
   "name": "connect-backend",
   "version": "1.0.0",
-  "description": "Express + MongoDB backend deployed on Render",
+  "description": "Express + MongoDB backend deployed on Render with testing setup",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "test": "mocha 'src/__tests__/*.js' --reporter mochawesome --recursive --timeout 60000 --exit"
   },
   "author": "",
   "license": "ISC",
@@ -15,10 +16,14 @@
     "express": "^4.19.2",
     "mongoose": "^8.6.1",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "mochawesome": "6.1.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "mocha": "^8.2.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0"
   },
   "engines": {
     "node": ">=18.0.0"
