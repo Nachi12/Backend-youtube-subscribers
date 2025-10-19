@@ -37,9 +37,5 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Routes
 app.use("/subscribers", subscribersRouter);
 
-// Default route
-app.get("/", (req, res) => {
-  res.send("Welcome to Get YouTube Subscribers API");
-});
 
 module.exports = app;
