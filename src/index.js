@@ -72,7 +72,7 @@ app.get("/", async (req, res) => {
             <b>Render</b> and includes Swagger API documentation.
           </p>
 
-          <a href="${baseUrl}/subscribers">Get All Subscribers</a>
+          <a href="${baseUrl}/subscribers" style="background-color:black;">Get All Subscribers</a>
           <a href="${baseUrl}/subscribers/names" style="background-color:#17a2b8;">Get Subscriber Names</a>
           <a href="${baseUrl}/api-docs" style="background-color:#6f42c1;">View Swagger API Docs</a>
 
