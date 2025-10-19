@@ -6,7 +6,12 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
+app.use(express.static(path.join(__dirname, "public")));
 
+// Optional: fallback route to serve index.html for SPA
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 if (!MONGO_URI) {
   console.error("❌ MONGO_URI is missing in environment variables!");
   process.exit(1);
