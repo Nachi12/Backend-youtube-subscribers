@@ -31,20 +31,20 @@ app.get("/", async (req, res) => {
               text-align: center;
               padding: 40px;
             }
-            h1 { color: #e50914; }
+            h1 { color:black; }
             p { color: #333; max-width: 600px; margin: 10px auto 30px; }
             a {
               display: block;
               margin: 10px auto;
               padding: 10px 20px;
               text-decoration: none;
-              color: white;
-              background-color: #007bff;
+              color: black;
+              background-color: white ;
               border-radius: 8px;
               width: 250px;
               transition: 0.3s;
             }
-            a:hover { background-color: #0056b3; }
+            
             input {
               padding: 10px;
               width: 250px;
@@ -54,14 +54,14 @@ app.get("/", async (req, res) => {
             }
             button {
               padding: 10px 20px;
-              background-color: #28a745;
+              background-color: white;
               color: white;
               border: none;
               border-radius: 6px;
               margin-left: 10px;
               cursor: pointer;
             }
-            button:hover { background-color: #1e7e34; }
+          
             footer {
               margin-top: 40px;
               font-size: 0.9em;
@@ -77,12 +77,12 @@ app.get("/", async (req, res) => {
             <b>Render</b> and includes Swagger API documentation.
           </p>
 
-          <a href="${baseUrl}/subscribers">➡️ Get All Subscribers</a>
-          <a href="${baseUrl}/subscribers/names" style="background-color:#17a2b8;">➡️ Get Subscriber Names</a>
-          <a href="${baseUrl}/api-docs" style="background-color:#6f42c1;">📘 View Swagger API Docs</a>
+          <a href="${baseUrl}/subscribers">Get All Subscribers</a>
+          <a href="${baseUrl}/subscribers/names" style="background-color:#17a2b8;">Get Subscriber Names</a>
+          <a href="${baseUrl}/api-docs" style="background-color:#6f42c1;">View Swagger API Docs</a>
 
           <div style="margin-top: 30px;">
-            <h3>🔍 Find Subscriber by ID</h3>
+            <h3>Find Subscriber by ID</h3>
             <input id="subscriberId" type="text" placeholder="Enter Subscriber ID" value="${subscriberId}">
             <button onclick="searchSubscriber()">Search</button>
           </div>
@@ -98,9 +98,7 @@ app.get("/", async (req, res) => {
             }
           </script>
 
-          <footer>
-            <p>Made with ❤️ using Node.js, Express & MongoDB Atlas</p>
-          </footer>
+         
         </body>
       </html>
     `);
