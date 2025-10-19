@@ -13,31 +13,99 @@ if (!MONGO_URI) {
   process.exit(1);
 }
 
-// ✅ Homepage with dynamic real ID
+// ✅ Homepage with input search and Swagger link
 app.get("/", async (req, res) => {
   try {
     const baseUrl = `https://${req.headers.host}`;
-    const firstSubscriber = await Subscriber.findOne(); // get any one subscriber
-
-    const subscriberId = firstSubscriber ? firstSubscriber._id : "no-subscriber-found";
+    const firstSubscriber = await Subscriber.findOne(); // get one existing subscriber
+    const subscriberId = firstSubscriber ? firstSubscriber._id : "";
 
     res.send(`
-      <div style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
-        <h1>🎬 YouTube Subscribers API</h1>
-        <p>This API is deployed on <b>Render</b> and connected to MongoDB Atlas. 
-        Use the links below to test each endpoint:</p>
-        <div style="margin-top: 30px;">
-          <a href="${baseUrl}/subscribers" style="display:block; margin:10px; text-decoration:none; color:#007bff;">➡️ Get All Subscribers</a>
-          <a href="${baseUrl}/subscribers/names" style="display:block; margin:10px; text-decoration:none; color:#28a745;">➡️ Get Subscribers Names</a>
-          <a href="${baseUrl}/subscribers/${subscriberId}" style="display:block; margin:10px; text-decoration:none; color:#dc3545;">➡️ Get Subscriber by ID (${subscriberId})</a>
-        </div>
-      </div>
+      <html>
+        <head>
+          <title>YouTube Subscribers API</title>
+          <style>
+            body {
+              font-family: 'Segoe UI', Arial, sans-serif;
+              background: #f4f4f4;
+              text-align: center;
+              padding: 40px;
+            }
+            h1 { color: #e50914; }
+            p { color: #333; max-width: 600px; margin: 10px auto 30px; }
+            a {
+              display: block;
+              margin: 10px auto;
+              padding: 10px 20px;
+              text-decoration: none;
+              color: white;
+              background-color: #007bff;
+              border-radius: 8px;
+              width: 250px;
+              transition: 0.3s;
+            }
+            a:hover { background-color: #0056b3; }
+            input {
+              padding: 10px;
+              width: 250px;
+              border: 1px solid #ccc;
+              border-radius: 6px;
+              margin-top: 20px;
+            }
+            button {
+              padding: 10px 20px;
+              background-color: #28a745;
+              color: white;
+              border: none;
+              border-radius: 6px;
+              margin-left: 10px;
+              cursor: pointer;
+            }
+            button:hover { background-color: #1e7e34; }
+            footer {
+              margin-top: 40px;
+              font-size: 0.9em;
+              color: #666;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>🎬 YouTube Subscribers API</h1>
+          <p>
+            This API demonstrates how to perform CRUD operations using 
+            <b>Node.js, Express, and MongoDB Atlas</b>. It is fully deployed on 
+            <b>Render</b> and includes Swagger API documentation.
+          </p>
+
+          <a href="${baseUrl}/subscribers">➡️ Get All Subscribers</a>
+          <a href="${baseUrl}/subscribers/names" style="background-color:#17a2b8;">➡️ Get Subscriber Names</a>
+          <a href="${baseUrl}/api-docs" style="background-color:#6f42c1;">📘 View Swagger API Docs</a>
+
+          <div style="margin-top: 30px;">
+            <h3>🔍 Find Subscriber by ID</h3>
+            <input id="subscriberId" type="text" placeholder="Enter Subscriber ID" value="${subscriberId}">
+            <button onclick="searchSubscriber()">Search</button>
+          </div>
+
+          <script>
+            function searchSubscriber() {
+              const id = document.getElementById("subscriberId").value.trim();
+              if (id) {
+                window.location.href = '/subscribers/' + id;
+              } else {
+                alert('Please enter a valid Subscriber ID.');
+              }
+            }
+          </script>
+
+          <footer>
+            <p>Made with ❤️ using Node.js, Express & MongoDB Atlas</p>
+          </footer>
+        </body>
+      </html>
     `);
   } catch (err) {
-    res.send(`
-      <h2>Error fetching subscribers ❌</h2>
-      <p>${err.message}</p>
-    `);
+    res.status(500).send(`<h2>Error fetching subscribers ❌</h2><p>${err.message}</p>`);
   }
 });
 
