@@ -61,12 +61,7 @@ app.get("/", async (req, res) => {
               margin-left: 10px;
               cursor: pointer;
             }
-          
-            footer {
-              margin-top: 40px;
-              font-size: 0.9em;
-              color: #666;
-            }
+        
           </style>
         </head>
         <body>
