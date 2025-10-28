@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
           <style>
             body {
               font-family: 'Segoe UI', Arial, sans-serif;
-              background: #f4f4f4;
+              background: #D3D3D3;
               text-align: center;
               padding: 40px;
             }
@@ -72,14 +72,14 @@ app.get("/", async (req, res) => {
             <b>Render</b> and includes Swagger API documentation.
           </p>
 
-          <a href="${baseUrl}/subscribers" style="background-color:black;">Get All Subscribers</a>
-          <a href="${baseUrl}/subscribers/names" style="background-color:#17a2b8;">Get Subscriber Names</a>
-          <a href="${baseUrl}/api-docs" style="background-color:#6f42c1;">View Swagger API Docs</a>
+          <a href="${baseUrl}/subscribers" style="background-color:white;">Get All Subscribers</a>
+          <a href="${baseUrl}/subscribers/names" style="background-color:white">Get Subscriber Names</a>
+          <a href="${baseUrl}/api-docs" style="background-color:white;">View Swagger API Docs</a>
 
-          <div style="margin-top: 30px;">
-            <h3>Find Subscriber by ID</h3>
+          <div style="margin-top: 30px;color:black;">
+                      <h3>Find Subscriber by ID</h3>
             <input id="subscriberId" type="text" placeholder="Enter Subscriber ID" value="${subscriberId}">
-            <button onclick="searchSubscriber()">Search</button>
+            <button onclick="searchSubscriber()" style="margin-top: 30px;color:black;">Search</button>
           </div>
 
           <script>
@@ -103,7 +103,7 @@ app.get("/", async (req, res) => {
 });
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URI)
   .then(() => {
     console.log("✅ Connected to MongoDB");
     app.listen(PORT, "0.0.0.0", () => {
